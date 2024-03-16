@@ -1,0 +1,71 @@
+---
+sidebar_position: 1
+---
+
+# Install
+
+You have **2 choices** if you want to use PolyUploader.
+
+## Use the application by compiling it by hand
+
+- Download application source code:
+
+```
+git clone https://github.com/spel987/PolyUploader.git
+```
+Or simply download with this [link](https://codeload.github.com/spel987/PolyUploader/zip/refs/heads/main).
+
+- Install the latest version of [Rust](https://www.rust-lang.org/tools/install): https://www.rust-lang.org/tools/install
+
+- Install Tauri-CLI:
+```bash
+cargo install tauri-cli
+```
+
+- Start compilation:
+```bash
+cd PolyUploader-main
+cargo tauri build
+```
+
+You'll find the installer in the `.\src-tauri\target\release\bundle` folder.
+
+## Use the already compiled application
+
+Download and install the [**latest release**](https://github.com/spel987/PolyUploader/releases/latest).
+
+:::info[Info]
+
+You'll find a **Windows** version, and a **Mac OS** version should be added soon.
+
+:::
+
+<details><summary>
+
+**Windows**
+
+</summary>
+
+A 64-bit version is available. Download it and run it.
+
+Here's a pictorial guide to installing the software.
+
+![Setup Windows Image 1](/img/install/setup_windows_image_1.png)
+
+![Setup Windows Image 2](/img/install/setup_windows_image_2.png)
+
+![Setup Windows Image 3](/img/install/setup_windows_image_3.png)
+
+![Setup Windows Image 4](/img/install/setup_windows_image_4.png)
+
+![Setup Windows Image 5](/img/install/setup_windows_image_5.png)
+
+![Setup Windows Image 6](/img/install/setup_windows_image_6.png)
+
+:::warning[Addition information]
+
+There is **no portable version** at present. In fact, Tauri creates a `C:\Users\<User>\AppData\Local\PolyUploader` folder containing the data required by the Webview.
+
+:::
+
+</details>

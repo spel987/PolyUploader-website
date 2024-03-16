@@ -1,0 +1,24 @@
+---
+sidebar_position: 5
+---
+
+# Hosting status
+
+Every 12 hours, a check is made to see **if the hosts are still online**. If this is not the case, the script makes it **unavailable**.
+
+_Here's an example of an offline host automatically deactivated:_
+![Offline host example](/img/hosting-status/offline_host_example.png)
+
+## Force host status check
+
+For various reasons, a web host **may be offline for only a few moments**. So you don't have to wait for the next check, you can **force the check**.
+
+You can do this by clicking on the **blue "Check host status" button** at the bottom of the page.
+
+![Check host status button](/img/hosting-status/check_host_status_button.png)
+
+:::info[info]
+
+You may be able to access a site marked as offline on the application with your browser. This is sometimes caused by **SSL certificate expiration**.
+
+:::

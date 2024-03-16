@@ -1,0 +1,76 @@
+---
+sidebar_position: 2
+---
+
+# Upload and extract function
+
+To upload a file and extract the link created, I use a **fairly comprehensive function**.
+
+## Structure
+
+```js title="script.js"
+function upload_to_host(request_data, response_format, link_extraction = [], affix = [], manage_file = []) {
+  //...
+}
+```
+
+- **`request_data`**: 
+  - `0`: The link to send the file (ex: https://litterbox.catbox.moe/resources/internals/api.php)
+  - `1`: The method of sending the file (ex: `POST`)
+  - `2`: The body of the request (ex: the file)
+  - `3`: An optional additional header (ex: `{"Content-Type": "application/json"}`)
+- **`response_format`**: The format used by the server response (ex: `json`)
+- **`link_extraction`**: How I extract the created link.
+  - The link may be known before the end of the upload, in which case I enter it directly into the array. (ex: `[url_filebin]`)
+  - The link may be present in an HTML response page, I extract it with `match` and a regular expression. (ex: `["match", /https:\/\/1fichier\.com\/\?([A-Za-z0-9]+)/, 0]`)
+  - One character can be replaced by another in the final link, so I use `replace` followed by the character to replace and the character to replace with. (ex: `["replace", "&", "_"]`)
+  - Otherwise, the link will be extracted from the response according to the elements and by entering the JSON architecture. (ex: `["data", "downloadPage"]`)
+- **`affix`**:
+  - `0`: Sometimes the site only returns the file's unique code, so you need to add a prefix in front of it to be able to access it. (ex: `["https://uplooad.net/"]`)
+  - `1`: Sometimes the site only returns the file's unique code, so you need to add a suffix afterwards to be able to access it. (ex: `["https://turbobit.net/", ".html"]`)
+- **`manage_file`**: This parameter is not required, but is only used for hosts that support manual file deletion.
+  - `0`: The link to which the file deletion request should be sent. I can provide it directly, retrieve it with `match` in the response data, or retrieve it in the JSON by fetching it from the architecture (ex: `["https://file-upload.org/"]` ; `["match", /https:\/\/1fichier\.com\/\?([A-Za-z0-9]+)/, 0]` ; `[["id"], ["delete_password"]]`)
+  - `1`: The method used to delete the file (ex: `DELETE`)
+  - `2`: The data in the body of the request made to delete the file. The data in the body of the request made to delete the file. This can be static so filled in, retrieved from the response data with match, retrieved from the JSON architecture or with a known pattern[^1]. (ex: `{"delete": "1", "submitme": "1", "returnAccount": "0", "submit": ""}` ; `{"send-id-file-delete": ["match", /^\d+/]}` ; `{"op": "del_file", "id": [0, "file_code"], "del_id": ["killcode", /https:\/\/hexload\.com\/[A-Za-z0-9]+\?killcode=[A-Za-z0-9]+/, "https://hexload.com/?op=upload_result&st=OK&fn=", [0, "file_code"]], "confirm": "yes", "token": "CSRF token to add"}`)
+  - `3`:
+    - `0`: The link sometimes requires a prefix. (ex: `["https://tempfiles.ninja/api/delete/"]`)
+    - `1`: The link sometimes requires a suffix.
+
+
+[^1]: **"known pattern"** means that many hosting sites use the same framework for uploading and deleting their files, called "XFileSharing Pro". To delete files, you need to retrieve a URL from the page and then repeat the operation again. Here's the piece of code that handles the retrieval of the deletion link for these sites. 
+
+    ```javascript
+    for (const key in manage_file[2]) {
+      if (manage_file[2].hasOwnProperty(key) && Array.isArray(manage_file[2][key]) && manage_file[2][key][0] === "killcode") {
+        let file_id = "";
+    
+        if (manage_file[2][key][3][0] === "match"){
+          file_id = data.match(manage_file[2][key][3][1])[manage_file[2][key][3][2]]
+        } else {
+          file_id = get_value_from_path(manage_file[2][key][3], data);
+        }
+        
+        let promise = fetch(url_for_bypass_cors + manage_file[2][key][2] + file_id, {method: "GET"})
+          .then((response) => response.text())
+          .then((html_response) => {
+            const killcode_url = html_response.match(manage_file[2][key][1])[0];
+            const killcode = killcode_url.match(/killcode=([^&]+)/)[1];
+            delete_data[key] = killcode;
+    
+            if (delete_data["token"]) {
+              return fetch(url_for_bypass_cors + killcode_url, { method: "GET" })
+                .then((response) => response.text())
+                .then((html_response) => {
+                  const csrf_token = html_response.match(/<input type="hidden" name="token" value="([^"]+)">/)[1];
+                  delete_data["token"] = csrf_token;
+                });
+            }
+          });
+    
+        promises.push(promise);
+    
+      }
+    
+    //...
+    }
+    ```

@@ -1,0 +1,64 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #4338c9;
+  --ifm-color-primary-dark: #4338c9;
+  --ifm-color-primary-darker: #4338c9;
+  --ifm-color-primary-darkest: #4338c9;
+  --ifm-color-primary-light: #4338c9;
+  --ifm-color-primary-lighter: #4338c9;
+  --ifm-color-primary-lightest: #4338c9;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #7d91fb;
+  --ifm-color-primary-dark: #7d91fb;
+  --ifm-color-primary-darker: #7d91fb;
+  --ifm-color-primary-darkest: #7d91fb;
+  --ifm-color-primary-light: #7d91fb;
+  --ifm-color-primary-lighter: #7d91fb;
+  --ifm-color-primary-lightest: #7d91fb;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.buttonSpace {
+  margin-left: 15px;
+}
+
+.gradientButton {
+  position: relative;
+  background-image: linear-gradient(to right, #1d4ddc -25%, #232f52 50%, #4e48e4 125%);
+  color: #e2e3e6;
+  transition: color 0.2s ease;
+  z-index: 1;
+}
+
+.gradientButton::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #1d4ddc 0%, #232f52 50%, #4e48e4 100%);
+  z-index: -1;
+  transition: opacity 0.2s linear;
+  opacity: 0;
+  border-radius: 7px;
+}
+
+.gradientButton:hover {
+  color: #d4d5d8;
+}
+
+.gradientButton:hover::before {
+  opacity: 1;
+}

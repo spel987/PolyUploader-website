@@ -28,7 +28,7 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           editUrl:
-            'https://github.com/spel987/PolyUploader-website/tree/main/docs/',
+            'https://github.com/spel987/PolyUploader-website/tree/main/',
           routeBasePath: '/',
         },
         blog: false,

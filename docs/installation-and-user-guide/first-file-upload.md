@@ -42,7 +42,7 @@ The individual upload buttons disappear, revealing a **check box** for each host
 
 ![Multiple upload button upload](/img/first-file-upload/multiple_upload_button_upload.png)
 
-The upload will begin and the **created links** will be displayed directly on the interface, with the option of **copying them individually** or **copying them all**. You can also create a **unique sharing link**, which uploads the links to https://sourceb.in. An **indicator informs you of the upload status you're at**, so how many links have been created out of the total.
+The upload will begin and the **created links** will be displayed directly on the interface, with the option of **copying them individually** or **copying them all**. You can also create a **unique sharing link**, which uploads the links to the PolyUploader database and makes them accessible via a link similar to this one: https://p-u.vercel.app/K3v2bpnMfc. An **indicator informs you of the upload status you're at**, so how many links have been created out of the total.
 
 ![Upload links example](/img/first-file-upload/upload_links_example.png)
 

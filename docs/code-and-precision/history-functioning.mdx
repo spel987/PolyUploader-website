@@ -4,6 +4,15 @@ sidebar_position: 3
 
 # History functioning
 
+<head>
+  <meta property="og:image" content="https://p-u.vercel.app/assets/meta_visual.png" />
+  <meta name="og:url" content="https://polyuploader.vercel.app/code-and-precision/history-functioning" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://p-u.vercel.app/assets/meta_visual.png" />
+  <meta name="og:description" content="History functioning - PolyUploader. Upload your files remotely to different hosting sites." />
+  <meta name="theme-color" content="#4f46e5" />
+</head>
+
 Here's an **example of a history**:
 
 ```js title="history.json"
@@ -14,6 +23,7 @@ Here's an **example of a history**:
     "manage": [
       "https://www.upload.ee/files/16176529/gofile.png.html?killcode=15454972480163889758&confirm=28471848_2e42a70c9baa8794681dbe112baba3e41cca66b2",
       "POST",
+      {},
       {}
     ]
   },
@@ -23,6 +33,7 @@ Here's an **example of a history**:
     "manage": [
       "",
       "",
+      {},
       {}
     ]
   },
@@ -35,7 +46,8 @@ Here's an **example of a history**:
       {
         "contentsId": "2f9c8fb5-8234-4473-9bc1-f3fc837a906b",
         "token": "eLP9iN3clBLUlXkUXvFfA6XI7EUAl3AE"
-      }
+      },
+      {}
     ]
   }
 }
@@ -47,7 +59,7 @@ To interact with the computer's local storage, I have to **use Rust and Tauri**.
 
 ```rust title="main.rs"
 #[tauri::command]
-fn add_history_json(newLink: &str, newUploadDate: &str, newExpirationDate: &str, manageLink: &str, deleteMethod: &str, deleteParameters: &str) {
+fn add_history_json(newLink: &str, newUploadDate: &str, newExpirationDate: &str, manageLink: &str, deleteMethod: &str, deleteParameters: &str, deleteHeaders: &str) {
     let history_file_path = "Resources/history.json";
 
     let mut file = File::open(history_file_path.clone()).unwrap();
@@ -57,11 +69,12 @@ fn add_history_json(newLink: &str, newUploadDate: &str, newExpirationDate: &str,
     let mut json: Value = serde_json::from_str(&contents).unwrap();
 
     let data_json_value: Value = serde_json::from_str(deleteParameters).unwrap();
+    let headers_json_value: Value = serde_json::from_str(deleteHeaders).unwrap();
 
     let new_info = json!({
         "date_upload": newUploadDate,
         "date_expires": newExpirationDate,
-        "manage": [manageLink, deleteMethod, data_json_value]
+        "manage": [manageLink, deleteMethod, data_json_value, headers_json_value]
     });
 
     json[newLink] = new_info;

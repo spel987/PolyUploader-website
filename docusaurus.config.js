@@ -42,6 +42,15 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {name: 'og:url', content: 'https://polyuploader.vercel.app'},
+        {name: 'og:image', content: 'https://p-u.vercel.app/assets/meta_visual.png'},
+        {name: 'twitter:card', content: 'summary_large_image'},
+        {name: 'twitter:image', content: 'https://p-u.vercel.app/assets/meta_visual.png'},
+        {name: 'og:description', content: 'Documentation - PolyUploader. Upload your files remotely to different hosting sites.'},
+        {name: 'theme-color', content: '#4f46e5'},
+        {name: 'google-site-verification', content: 'dUIfx_ZLCzBvgIpq4n0tj7OpEyAqDt3kugqd5ryb02w'}
+      ],
       navbar: {
         title: 'PolyUploader',
         logo: {
@@ -78,12 +87,20 @@ const config = {
             title: 'More',
             items: [
               {
+                label: 'Demonstration',
+                href: 'https://p-u.vercel.app/demonstration',
+              },
+              {
                 label: 'GitHub Repository',
                 href: 'https://github.com/spel987/PolyUploader',
               },
               {
                 label: 'Site GitHub Repository',
                 href: 'https://github.com/spel987/PolyUploader-website',
+              },
+              {
+                label: 'Terms',
+                href: 'https://p-u.vercel.app/terms',
               },
             ],
           },

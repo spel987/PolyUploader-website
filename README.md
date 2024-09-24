@@ -1,4 +1,5 @@
 <img src="https://i.imgur.com/qGdFzBd.png">
+
 # PolyUploader website
 
 This repository contains the files used to build the site with Docusaurus. It was created to document the [PolyUploader](https://github.com/spel987/PolyUploader) project and provide a help.

@@ -1,0 +1,26 @@
+---
+sidebar_position: 7
+---
+
+# Notes from the developer
+
+<head>
+  <meta property="og:image" content="https://p-u.vercel.app/assets/meta_visual.png" />
+  <meta name="og:url" content="https://polyuploader.vercel.app/presentation" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://p-u.vercel.app/assets/meta_visual.png" />
+  <meta name="og:description" content="Notes from the developer - PolyUploader. Upload your files remotely to different hosting sites." />
+  <meta name="theme-color" content="#4f46e5" />
+</head>
+
+To handle file uploads, I rely on various methods depending on the host: some provide APIs, others require converting cURL commands to JavaScript, and a few need request emulation based on their frontend behavior.
+
+Maintaining support for over a hundred hosts has been a real challenge, especially as I’m working solo on this project while still pursuing my studies. While many hosts share similar logic (a lot of them run on XFileSharing Pro), each one brings its own quirks, making the work complex and often repetitive.
+
+Special thanks to **Tux 528** ([@Tux528](https://github.com/Tux528)) for his valuable external feedback and all the ideas he brought to help improve and optimize the project.
+
+If you enjoy the work and find it useful, feel free to ⭐ star the repository, it truly means a lot!
+
+If you’d like to learn more, feel free to explore the repositories:
+  - [PolyUploader-Website](https://github.com/spel987/PolyUploader-website): powers the documentation
+  - [PolyUploader-API](https://github.com/spel987/PolyUploader-API): powers the statistics, the unique shareable bundle links and other things to do with the database

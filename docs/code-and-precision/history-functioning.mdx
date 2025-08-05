@@ -13,53 +13,103 @@ sidebar_position: 3
   <meta name="theme-color" content="#4f46e5" />
 </head>
 
-Here's an **example of a history**:
+Each uploaded file is **saved into a history file** (`history.json`). For every entry, the following is stored:
+
+- The **URL** of the uploaded file
+- The **upload date** and **expiration date**
+- If supported, a **"manage" array** used for deletion (URL, method, body, headers, and a `formatted` flag)
+- The original **filename**
+
+This history is stored locally using Tauri's Rust backend.
+
+## 🧾 Example of a history
 
 ```js title="history.json"
 {
-  "https://www.upload.ee/files/16176529/gofile.png.html": {
-    "date_upload": "01/17/2024 6:34 PM",
-    "date_expires": "03/07/2024 6:34 PM",
+  "https://gofile.io/d/e2YHue": {
+    "date_upload": "07/07/2025 7:40 PM",
+    "date_expires": "07/17/2025 7:40 PM",
     "manage": [
-      "https://www.upload.ee/files/16176529/gofile.png.html?killcode=15454972480163889758&confirm=28471848_2e42a70c9baa8794681dbe112baba3e41cca66b2",
-      "POST",
-      {},
-      {}
-    ]
-  },
-  "https://litter.catbox.moe/dr2bd3.ico": {
-    "date_upload": "12/26/2023 11:25 PM",
-    "date_expires": "12/27/2023 11:25 PM",
-    "manage": [
-      "",
-      "",
-      {},
-      {}
-    ]
-  },
-  "https://gofile.io/d/J0yXO2": {
-    "date_upload": "01/21/2024 7:35 PM",
-    "date_expires": "01/31/2024 7:35 PM",
-    "manage": [
-      "https://api.gofile.io/deleteContent",
+      "https://api.gofile.io/contents",
       "DELETE",
       {
-        "contentsId": "2f9c8fb5-8234-4473-9bc1-f3fc837a906b",
-        "token": "eLP9iN3clBLUlXkUXvFfA6XI7EUAl3AE"
+        "contentsId": "b2f93044-343b-4087-a6f8-9c78d9ae96e0"
+      },
+      {
+        "Authorization": "Bearer API_KEY"
+      }
+    ],
+    "filename": "613e986cab42c75bcf21863c84a5b42d.jpg"
+  },
+  "https://uploady.io/tsp8o0hu8y3q": {
+    "date_upload": "07/07/2025 10:55 PM",
+    "date_expires": "08/06/2025 10:55 PM",
+    "manage": [
+      "https://uploady.io",
+      "POST",
+      {
+        "op": "del_file",
+        "id": "tsp8o0hu8y3q",
+        "del_id": "lhf3b1wj6y",
+        "confirm": "yes",
+        "token": "73cd2a25e0e75806db305e4468f52c8c"
       },
       {}
-    ]
+    ],
+    "filename": "1de1986b16057c600a91c8d248e43515.png"
+  },
+  "https://1fichier.com/?7yi4id6xigpdwysc4z8i": {
+    "date_upload": "07/09/2025 11:33 AM",
+    "date_expires": "07/24/2025 11:33 AM",
+    "manage": [
+      "https://1fichier.com/remove/7yi4id6xigpdwysc4z8i/vLj5dTH6",
+      "POST",
+      {
+        "force": "1"
+      },
+      {}
+    ],
+    "filename": "fd36c2b8872af8ba234b3bf148219a65.jpg"
+  },
+  "https://megaup.net/676b3eae2ca78e960b1f2cc77164862b/613e986cab42c75bcf21863c84a5b42d.jpg": {
+    "date_upload": "07/09/2025 6:39 PM",
+    "date_expires": "09/07/2025 6:39 PM",
+    "manage": [
+      "https://megaup.net/676b3eae2ca78e960b1f2cc77164862b~d?251c4611e53d3f41ce933182cd71ab12",
+      "POST",
+      {
+        "submitted": "1",
+        "delete": "1",
+        "returnAccount": "0",
+        "submit": ""
+      },
+      {},
+      "formatted"
+    ],
+    "filename": "613e986cab42c75bcf21863c84a5b42d.jpg"
   }
 }
 ```
 
-Every link created is **saved in the history**. If the host supports manual deletion, the information required for deletion will also be saved. See the [**function**](/code-and-precision/upload-and-extract-function) for more information on recovery.
+## 🧠 How it works behind the scenes
 
-To interact with the computer's local storage, I have to **use Rust and Tauri**. Here's the function used to write to the `history.json` file:
+To interact with the local file system (like reading and writing `history.json`), I use Rust with Tauri.
+
+The function responsible for writing a new entry to the history looks like this:
 
 ```rust title="main.rs"
 #[tauri::command]
-fn add_history_json(newLink: &str, newUploadDate: &str, newExpirationDate: &str, manageLink: &str, deleteMethod: &str, deleteParameters: &str, deleteHeaders: &str) {
+fn add_history_json(
+    newLink: &str,
+    newUploadDate: &str,
+    newExpirationDate: &str,
+    manageLink: &str,
+    deleteMethod: &str,
+    deleteParameters: &str,
+    deleteHeaders: &str,
+    formattedRequest: &str,
+    uploadFilename: &str
+) {
     let history_file_path = "Resources/history.json";
 
     let mut file = File::open(history_file_path.clone()).unwrap();
@@ -74,7 +124,8 @@ fn add_history_json(newLink: &str, newUploadDate: &str, newExpirationDate: &str,
     let new_info = json!({
         "date_upload": newUploadDate,
         "date_expires": newExpirationDate,
-        "manage": [manageLink, deleteMethod, data_json_value, headers_json_value]
+        "manage": [manageLink, deleteMethod, data_json_value, headers_json_value, formattedRequest],
+        "filename": uploadFilename
     });
 
     json[newLink] = new_info;
@@ -86,7 +137,12 @@ fn add_history_json(newLink: &str, newUploadDate: &str, newExpirationDate: &str,
         .unwrap();
 
     let json_str = serde_json::to_string_pretty(&json).unwrap();
-
     file.write_all(json_str.as_bytes()).unwrap();
 }
+
 ```
+> 📝 Note: You don’t need to understand Rust to use the app, but this shows how advanced features (like history storage and deletion) are implemented natively for performance and security.
+
+## 🔁 Want to delete a file later?
+
+All the information needed for deletion is saved. [See this function](/code-and-precision/upload-and-extract-function) to understand how the app parses the history and performs deletions.

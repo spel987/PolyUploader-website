@@ -1,11 +1,255 @@
 .features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
+  padding: 6rem 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.features * {
+  font-family: inherit;
+}
+
+.featureCol {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 996px) {
+  .col {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .featureCard {
+    margin-bottom: 1.5rem;
+  }
+  
+  .featureCard:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.featuresHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 1rem !important;
+}
+
+.sectionSubtitle {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.featureCard {
+  padding: 2rem 1.5rem;
+  height: 100%;
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: radial-gradient(ellipse 120% 100% at 50% 0%, rgba(99,102,241,0.18) 0%, rgba(102, 92, 246, 0.1) 60%, rgba(226, 228, 255, 0.07) 100%);
+  box-shadow: 0 0 32px 0 rgba(99, 102, 241, 0.10), 0 0 8px 2px rgba(99, 102, 241, 0.10);
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  border-radius: 20px;
+  box-shadow: 0 0 60px 10px rgba(99, 102, 241, 0.13) inset, 0 0 30px 5px rgba(139, 92, 246, 0.09) inset;
+  opacity: 1;
+  transition: box-shadow 0.4s, opacity 0.4s;
+  z-index: 0;
+}
+
+.featureCard:hover::before {
+  box-shadow: 0 0 90px 18px rgba(99, 102, 241, 0.27) inset, 0 0 60px 12px rgba(139, 92, 246, 0.19) inset;
+  opacity: 1;
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--ifm-color-primary);
+  opacity: 0;
+  transition: all 0.4s ease;
+  filter: blur(20px);
+  transform: scale(0.8);
+  z-index: -1;
+}
+
+.featureCard:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.featureCard:hover::before {
+  opacity: 0.1;
+  transform: scale(1);
+  filter: blur(30px);
+}
+
+.featureIconContainer {
+  text-align: center;
+  margin-bottom: 0.75rem;
 }
 
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  height: 72px;
+  width: 72px;
+  transition: all 0.3s ease;
+}
+
+.placeholderIcon {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.featureCard:hover .featureSvg {
+  transform: scale(1.1) rotateY(10deg);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+.competitiveSection {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  margin: 0;
+}
+
+.competitiveContent {
+  padding: 0.5rem;
+}
+
+.competitiveTitle {
+  font-size: 1.8rem !important;
+  margin-bottom: 1.5rem !important;
+  font-weight: 600 !important;
+}
+
+.competitiveText {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--ifm-color-emphasis-800);
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.platformLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.platformLink:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--ifm-color-primary);
+  text-underline-offset: 2px;
+}
+
+.platformLink strong {
+  font-weight: 600;
+  color: inherit;
+}
+
+.competitiveText strong, .featuresRow strong {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.moreInfo {
+  text-align: center;
+  margin-top: 3rem;
+  color: var(--ifm-color-emphasis-700);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.moreInfo .highlight {
+  color: #6564eb;
+  font-weight: 600;
+}
+
+.featureContent {
+  text-align: center;
+}
+
+.featureTitle {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1rem !important;
+}
+
+.featureDescription {
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.featureDescription strong {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 996px) {
+  .features {
+    padding: 4rem 0;
+  }
+  
+  .featuresHeader {
+    margin-bottom: 3rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem !important;
+  }
+  
+  .sectionSubtitle {
+    font-size: 1.1rem;
+  }
+  
+  .featureCard {
+    margin-bottom: 2rem;
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .features {
+    padding: 3rem 0;
+  }
+  
+  .sectionTitle {
+    font-size: 1.8rem !important;
+  }
+  
+  .featureCard {
+    padding: 1.5rem 1rem;
+  }
+  
+  .featureSvg {
+    height: 60px;
+    width: 60px;
+  }
 }

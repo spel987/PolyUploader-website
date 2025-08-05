@@ -13,73 +13,146 @@ sidebar_position: 2
   <meta name="theme-color" content="#4f46e5" />
 </head>
 
-To upload a file and extract the link created, I use a **fairly comprehensive function**.
+Allows you to send a file to a file host, extract the download link and, if required, manage the manual deletion of the file.
 
-## Structure
+## 🧠 Function overview
 
-```js title="script.js"
+```js
 function upload_to_host(request_data, response_format, link_extraction = [], affix = [], manage_file = []) {
-  //...
+  // ...
 }
 ```
 
-- **`request_data`**: 
-  - `0`: The link to send the file (ex: https://litterbox.catbox.moe/resources/internals/api.php)
-  - `1`: The method of sending the file (ex: `POST`)
-  - `2`: The body of the request (ex: the file)
-  - `3`: An optional additional header (ex: `{"Content-Type": "application/json"}`)
-- **`response_format`**: The format used by the server response (ex: `json`)
-- **`link_extraction`**: How I extract the created link.
-  - The link may be known before the end of the upload, in which case I enter it directly into the array. (ex: `[url_filebin]`)
-  - The link may be present in an HTML response page, I extract it with `match` and a regular expression. (ex: `["match", /https:\/\/1fichier\.com\/\?([A-Za-z0-9]+)/, 0]`)
-  - One character can be replaced by another in the final link, so I use `replace` followed by the character to replace and the character to replace with. (ex: `["replace", "&", "_"]`)
-  - Otherwise, the link will be extracted from the response according to the elements and by entering the JSON architecture. (ex: `["data", "downloadPage"]`)
-- **`affix`**:
-  - `0`: Sometimes the site only returns the file's unique code, so you need to add a prefix in front of it to be able to access it. (ex: `["https://uplooad.net/"]`)
-  - `1`: Sometimes the site only returns the file's unique code, so you need to add a suffix afterwards to be able to access it. (ex: `["https://turbobit.net/", ".html"]`)
-- **`manage_file`**: This parameter is not required, but is only used for hosts that support manual file deletion.
-  - `0`: The link to which the file deletion request should be sent. I can provide it directly, retrieve it with `match` in the response data, or retrieve it in the JSON by fetching it from the architecture (ex: `["https://file-upload.org/"]` ; `["match", /https:\/\/1fichier\.com\/\?([A-Za-z0-9]+)/, 0]` ; `[["id"], ["delete_password"]]`)
-  - `1`: The method used to delete the file (ex: `DELETE`)
-  - `2`: The data in the body of the request made to delete the file. The data in the body of the request made to delete the file. This can be static so filled in, retrieved from the response data with match, retrieved from the JSON architecture or with a known pattern[^1]. (ex: `{"delete": "1", "submitme": "1", "returnAccount": "0", "submit": ""}` ; `{"send-id-file-delete": ["match", /^\d+/]}` ; `{"op": "del_file", "id": [0, "file_code"], "del_id": ["killcode", /https:\/\/hexload\.com\/[A-Za-z0-9]+\?killcode=[A-Za-z0-9]+/, "https://hexload.com/?op=upload_result&st=OK&fn=", [0, "file_code"]], "confirm": "yes", "token": "CSRF token to add"}`)
-  - `3`:
-    - `0`: The link sometimes requires a prefix. (ex: `["https://tempfiles.ninja/api/delete/"]`)
-    - `1`: The link sometimes requires a suffix.
+## 📦 Parameters explained
 
+### 📍 `request_data`
 
-[^1]: **"known pattern"** means that many hosting sites use the same framework for uploading and deleting their files, called "XFileSharing Pro". To delete files, you need to retrieve a URL from the page and then repeat the operation again. Here's the piece of code that handles the retrieval of the deletion link for these sites. 
+The base configuration for the HTTP request to the host:
 
-    ```javascript
-    for (const key in manage_file[2]) {
-      if (manage_file[2].hasOwnProperty(key) && Array.isArray(manage_file[2][key]) && manage_file[2][key][0] === "killcode") {
-        let file_id = "";
-    
-        if (manage_file[2][key][3][0] === "match"){
-          file_id = data.match(manage_file[2][key][3][1])[manage_file[2][key][3][2]]
-        } else {
-          file_id = get_value_from_path(manage_file[2][key][3], data);
-        }
-        
-        let promise = fetch(url_for_bypass_cors + manage_file[2][key][2] + file_id, {method: "GET"})
-          .then((response) => response.text())
-          .then((html_response) => {
-            const killcode_url = html_response.match(manage_file[2][key][1])[0];
-            const killcode = killcode_url.match(/killcode=([^&]+)/)[1];
-            delete_data[key] = killcode;
-    
-            if (delete_data["token"]) {
-              return fetch(url_for_bypass_cors + killcode_url, { method: "GET" })
-                .then((response) => response.text())
-                .then((html_response) => {
-                  const csrf_token = html_response.match(/<input type="hidden" name="token" value="([^"]+)">/)[1];
-                  delete_data["token"] = csrf_token;
-                });
-            }
-          });
-    
-        promises.push(promise);
-    
+- `request_data[0]` → Endpoint URL
+- `request_data[1]` → HTTP method (`"POST"`, `"GET"`…)
+- `request_data[2]` → Body of the request (e.g. a `FormData` object)
+- `request_data[3]` → Optional headers (e.g. `{ "Content-Type": "application/json" }`)
+
+### 📬 `response_format`
+
+Type of response expected from the server:
+
+- `"json"` → if the server returns a JSON object
+- `"text"` → if the server returns plain text or HTML
+
+### 🔗 `link_extraction`
+
+Rules to extract the download link from the server’s response:
+
+- 🔹 Static:
+  `["https://example.com/" + code]` — build the link manually
+- 🔹 Regex match:
+  `["match", /regex/, index]` — extract using a rege
+- 🔹 Replace:
+  `["replace", "&", "_"]` — replace characters in a string
+- 🔹 JSON path:
+  `["data", "downloadPage"]` → will return `data["data"]["downloadPage"]`
+
+### 🧩 `affix`
+
+Used to wrap the final link with a prefix and/or suffix:
+
+- `affix[0]` → prefix (e.g. `"https://host.com/file/"`)
+- `affix[1]` → suffix (e.g. `".html"`)
+
+### 🗑️ `manage_file`
+
+Used for hosts that allow deleting the uploaded file:
+
+- `manage_file[0]` → Delete URL (string, regex, or nested JSON path)
+- `manage_file[1]` → HTTP method (`"DELETE"`, `"POST"`...)
+- `manage_file[2]` → Delete body content
+- `manage_file[3]` → [prefix, suffix] for delete URL
+
+## 🧨 Special Case: Killcode System
+
+Some hosts (like those using **XFileSharing Pro**) require an extra step with a `killcode` before deletion. This is handled automatically:
+
+```js
+if (manage_file[2][key][0] === "killcode") {
+  // Logic to extract the file ID
+  // Fetch the killcode page
+  // Extract killcode and optional token, code or/and rand
+}
+```
+
+This allows deletion for hosts that use:
+
+- Separate token-based deletion pages
+- CSRF-protected forms
+- Dynamic or time-based kill links
+
+## 🧪 Examples
+
+### ✅ Example 1: JSON + Direct link
+
+```js
+upload_to_host(
+  [
+    "https://example.com/upload", 
+    "POST", 
+    formData, 
+    { Authorization: "Bearer token" }
+  ],
+  "json",
+  ["data", "url"]
+);
+```
+
+### ✅ Example 2: Text + Regex match
+
+```js
+upload_to_host(
+  [
+    "https://example.com/upload", 
+    "POST", 
+    formData
+  ],
+  "text",
+  ["match", /https:\/\/example\.com\/file\/[a-z0-9]+/, 0]
+);
+```
+
+### ✅ Example 3: Real case (Gofile)
+
+```js
+const sent_data_form = new FormData();
+sent_data_form.append("file", STATE.file_to_upload);
+
+const headers = api_key_host ? { "Authorization": "Bearer " + api_key_host } : {};
+
+upload_to_host(
+  [
+    URL_FOR_BYPASS_CORS + "https://upload.gofile.io/uploadfile",
+    "POST",
+    sent_data_form,
+    headers
+  ],
+  "json",
+  ["data", "downloadPage"],
+  [],
+  api_key_host
+  ? [
+      "https://api.gofile.io/contents",
+      "DELETE",
+      {
+        "contentsId": ["data", "parentFolder"]
+      },
+      [],
+      headers
+    ]
+  : [
+      "https://api.gofile.io/contents",
+      "DELETE",
+      {
+        "contentsId":["data", "parentFolder"], "token": ["data", "guestToken"]
       }
-    
-    //...
-    }
-    ```
+    ]
+);
+```

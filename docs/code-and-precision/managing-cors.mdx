@@ -1,0 +1,59 @@
+---
+sidebar_position: 1
+---
+
+# Managing CORS
+
+<head>
+  <meta property="og:image" content="https://p-u.vercel.app/assets/meta_visual.png" />
+  <meta name="og:url" content="https://polyuploader.vercel.app/code-and-precision/manage-cors" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://p-u.vercel.app/assets/meta_visual.png" />
+  <meta name="og:description" content="Managing CORS - PolyUploader. Upload your files remotely to different hosting sites." />
+  <meta name="theme-color" content="#4f46e5" />
+</head>
+
+To bypass CORS restrictions on certain hosts, PolyUploader uses a lightweight local HTTP proxy named [`warp-cors`](https://github.com/Bassetts/warp-cors). Instead of running the proxy as a standalone executable (`warp-cors.exe`), the logic has been integrated directly into the Rust backend. I've tweaked the `warp-cors` code to better suit my needs, especially for handling session cookies.
+
+## 🤔 How it works
+
+At startup, the app launches the `warp-cors` proxy server internally (on port `61337`). Rather than sending requests directly to `https://example.com`, they're routed through:
+
+```
+http://127.0.0.1:61337/https://example.com
+```
+This avoids any browser CORS errors entirely.
+
+## 🪛 Integration
+
+- The Rust backend imports and launches the `warp-cors` proxy via its library interface.
+- Requests that require CORS bypass are automatically prefixed in the frontend.
+
+## 🗒️ Example
+
+```rust title="main.rs"
+// Launch the warp-cors proxy
+use tokio::runtime::Builder;
+use warp_cors::app::{Config, run};
+
+fn main() {
+  std::thread::spawn(|| {
+      let rt = Builder::new_multi_thread()
+          .enable_all()
+          .build()
+          .unwrap();
+      let cfg = Config { host: "0.0.0.0".into(), port: 61337 };
+      rt.block_on(run(cfg));
+  });
+}
+```
+
+```js title="example.js"
+// Use the proxy
+const proxy = "http://127.0.0.1:61337/";
+upload_to_host([
+  proxy + "https://upload.gofile.io/uploadfile/",
+  "POST",
+  sent_data_form
+]);
+```

@@ -1,13 +1,22 @@
 <img src="https://i.imgur.com/qGdFzBd.png">
 
-# PolyUploader website
+# PolyUploader Website
 
-This repository contains the files used to build the site with Docusaurus. It was created to document the [PolyUploader](https://github.com/spel987/PolyUploader) project and provide a help.
+This repository contains the source code for the [PolyUploader documentation site](https://polyuploader.vercel.app/), built with [Docusaurus](https://docusaurus.io/) and deployed via [Vercel](https://vercel.com).
 
-This website is built using [Docusaurus](https://docusaurus.io/), and is deployed by [Vercel](https://vercel.com)
+The background from the landing page comes from [React Bits](https://reactbits.dev/backgrounds/silk).
 
-The site can be accessed at this URL: https://polyuploader.vercel.app/
+The website was created to document the [PolyUploader](https://github.com/spel987/PolyUploader) project and provide help to users.
 
-# Suggestions
+It includes:
 
-If you have any questions or suggestions, please open an [issue](https://github.com/spel987/PolyUploader-website/issues).
+## 📖 Full Documentation 
+Guides, explanations, and technical details on how PolyUploader works and how to use it effectively.
+
+---
+
+The website is accessible at: https://polyuploader.vercel.app/
+
+# 💬 Suggestions
+
+If you have any questions, suggestions, or want to contribute, feel free to open an [issue](https://github.com/spel987/PolyUploader-website/issues).

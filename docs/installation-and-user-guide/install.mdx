@@ -15,39 +15,55 @@ sidebar_position: 1
 
 You have **2 choices** if you want to use PolyUploader.
 
-## Use the application by compiling it by hand
+## 🔧 Use the application by compiling it by hand:
 
-- Download application source code:
+1) **Clone the repository:**
 
 ```
 git clone https://github.com/spel987/PolyUploader.git
 ```
-Or simply download with this [link](https://codeload.github.com/spel987/PolyUploader/zip/refs/heads/main).
 
-- Install the latest version of [Rust](https://www.rust-lang.org/tools/install): https://www.rust-lang.org/tools/install
+2) **Install the latest version of Rust:** https://www.rust-lang.org/tools/install
+3) **Install Tauri-CLI with this command:**
 
-- Install Tauri-CLI:
-```bash
+```
 cargo install tauri-cli
 ```
 
-- Start compilation:
-```bash
-cd PolyUploader-main
+4) **Start compilation with this command:**
+
+```
 cargo tauri build
 ```
 
 You'll find the installer in the `.\src-tauri\target\release\bundle` folder.
 
-## Use the already compiled application
+**Or start debugging the application with this command:**
 
-Download and install the [**latest release**](https://p-u.vercel.app/download).
+```
+cargo tauri dev
+```
 
-:::info[Info]
 
-You'll find a **Windows** version.
+*Optional: If you wish to modify the CSS with TailwindCSS:*
 
-:::
+1) **Install the latest version of Node.js:** https://nodejs.org
+2) **Install the dependencies:**
+
+```
+npm i
+```
+
+3) **Run the script command to build the CSS file:**
+
+```
+npm run tailwind
+```
+## 🖥️ Or simply download and run the [release](https://github.com/spel987/PolyUploader/releases/latest) (Windows only).
+
+> 1) For the moment, the application is only available on Windows. I tried to build the application for Linux but I kept getting webkit errors and on top of that Linux doesn't handle certain CSS effects in the same way. The application wouldn't look very good and would be full of bugs. However, why not work to solve this problem in future versions.
+> 2) I'm not providing a portable version at the moment. In fact, Tauri creates a `C:\Users\<User>\AppData\Local\PolyUploader` folder containing the data required by the Webview.
+
 
 <details><summary>
 

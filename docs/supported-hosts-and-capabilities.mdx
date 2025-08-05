@@ -1,101 +1,173 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 # Supported hosts and capabilities
 
 <head>
   <meta property="og:image" content="https://p-u.vercel.app/assets/meta_visual.png" />
-  <meta name="og:url" content="https://polyuploader.vercel.app/supported-hosts-and-capabilities" />
+  <meta name="og:url" content="https://polyuploader.vercel.app/comparison-mirrored-to-mirrorace-org" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://p-u.vercel.app/assets/meta_visual.png" />
   <meta name="og:description" content="Supported hosts and capabilities - PolyUploader. Upload your files remotely to different hosting sites." />
   <meta name="theme-color" content="#4f46e5" />
 </head>
 
-Below is a table of the hosting providers **currently supported by the application**, along with their various **capabilities**.
+### 🗒️ Legend
 
-| Name            | Url                          | Max files size |   Time to file expiration    | Supports manual deletion | Host requiring an API key |
-| :-------------- | :--------------------------- | :------------: | :--------------------------: | :----------------------: | :-----------------------: |
-| 1fichier        | https://1fichier.com         |    infinite    |           15 days            |            ✔️            |             ❌             |
-| Turbobit        | https://turbobit.net         |     200 MB     |            7 days            |            ❌             |             ❌             |
-| Bowfile         | https://bowfile.com          |     20 GB      |           30 days            |            ✔️            |             ❌             |
-| Gofile          | https://gofile.io            |    infinite    |           10 days            |            ✔️            |             ❌             |
-| Hitfile         | https://hitfile.net          |     100 GB     |           30 days            |            ❌             |             ❌             |
-| Uplooad         | https://uplooad.net          |      1 GB      |            2 days            |            ✔️            |             ❌             |
-| 1Cloudfile      | https://1cloudfile.com       |      5 GB      |           30 days            |            ✔️            |             ❌             |
-| Uploadify       | https://uploadify.net        |      2 GB      |           infinite           |            ✔️            |             ❌             |
-| File.io         | https://file.io              |      2 GB      |           14 days            |            ❌             |             ❌             |
-| file-upload.org | https://file-upload.org      |     200 MB     |           60 days            |            ✔️            |             ❌             |
-| RapidFileShare  | http://rapidfileshare.net    |     512 MB     |            5 days            |            ✔️            |             ❌             |
-| Upload.ee       | https://upload.ee            |     100 MB     |           50 days            |            ✔️            |             ❌             |
-| transfer.sh     | https://transfer.sh          |     10 GB      |           14 days            |            ❌             |             ❌             |
-| Netu            | https://netu.ac              |      8 GB      |           30 days            |            ❌             |             ❌             |
-| Buzzheavier     | https://buzzheavier.com      |    infinite    |           infinite           |            ❌             |             ❌             |
-| HexUpload       | https://hexload.com          |      2 GB      |           60 days            |            ✔️            |             ❌             |
-| DailyUploads    | https://dailyuploads.net     |    infinite    |           30 days            |            ❌             |             ❌             |
-| UsersDrive      | https://usersdrive.com       |    2.25 GB     |           10 days            |            ✔️            |             ❌             |
-| Send.cm         | https://send.cm              |     100 GB     |           15 days            |            ❌             |             ❌             |
-| Mexa.sh         | https://mexa.sh              |     500 MB     |           60 days            |            ✔️            |             ❌             |
-| Clicknupload    | https://clicknupload.click   |      2 GB      |            7 days            |            ✔️            |             ❌             |
-| MegaUp          | https://megaup.net           |      5 GB      |           60 days            |            ✔️            |             ❌             |
-| AnonSharing     | https://anonsharing.com      |      1 GB      |           180 days           |            ✔️            |             ❌             |
-| Filespace       | https://filespace.com        |     150 MB     |           10 days            |            ❌             |             ❌             |
-| Gulfup          | https://www.gulf-up.com      |     200 MB     |           10 days            |            ✔️            |             ❌             |
-| Fastupload      | https://fastupload.io        |     50 GB      |           30 days            |            ✔️            |             ❌             |
-| DepositFiles    | https://dfiles.eu            |     10 GB      |           90 days            |            ❌             |             ❌             |
-| Download.gg     | https://download.gg          |     25 GB      |           infinite           |            ✔️            |             ❌             |
-| Sendvid         | https://sendvid.com          |      1 GB      |           90 days            |            ❌             |             ❌             |
-| AnonTransfer    | https://anontransfer.com     |      1 GB      |           30 days            |            ❌             |             ❌             |
-| Litterbox       | https://litterbox.catbox.moe |      1 GB      |           24 hours           |            ❌             |             ❌             |
-| Temp.sh         | https://temp.sh              |      4 GB      |            3 days            |            ❌             |             ❌             |
-| TmpFiles.org    | https://tmpfiles.org         |     100 MB     |            1 hour            |            ❌             |             ❌             |
-| Free.fr         | https://transfert.free.fr    |     10 GB      |            7 days            |            ✔️            |             ❌             |
-| Uguu.se         | https://uguu.se              |     32 MB      |           3 hours            |            ❌             |             ❌             |
-| Filebin         | https://filebin.net          |    infinite    |            7 days            |            ✔️            |             ❌             |
-| Upstore         | https://upstore.net          |      1 GB      |           30 days            |            ❌             |             ❌             |
-| uFile           | https://ufile.io             |      5 GB      |           30 days            |            ❌             |             ❌             |
-| KrakenFiles     | https://krakenfiles.com      |      1 GB      |           30 days            |            ❌             |             ❌             |
-| Media.cm        | https://media.cm             |     300 MB     |           90 days            |            ❌             |             ❌             |
-| Oshi.at         | https://oshi.at              |      5 GB      |           2 hours            |            ✔️            |             ❌             |
-| bashupload      | https://bashupload.com       |     50 GB      |            3 days            |            ❌             |             ❌             |
-| Tommo.team      | https://tommo.team           |      4 GB      |           30 days            |            ❌             |             ❌             |
-| tempfiles.ninja | https://tempfiles.ninja      |     100 MB     |           24 hours           |            ✔️            |             ❌             |
-| UploadEv        | https://uploadev.org         |     250 MB     |           10 days            |            ✔️            |             ❌             |
-| 0x0.st          | https://0x0.st               |     512 MB     | depends on the file size[^1] |            ❌             |             ❌             |
-| udrop           | https://udrop.com            |     10 GB      |            7 days            |            ✔️            |             ❌             |
-| Tempsend        | https://tempsend.com         |      2 GB      |            7 days            |            ❌             |             ❌             |
-| Curl.by         | https://curl.by              |     32 MB      |           30 days            |            ❌             |             ❌             |
-| FileTmp         | https://filetmp.com          |     300 MB     |           5 hours            |            ❌             |             ❌             |
-| CCU.to          | https://ccu.to               |      5 GB      |            3 days            |            ❌             |             ❌             |
-| ImgBB           | https://imgbb.com            |     32 MB      |           infinite           |            ❌             |             ❌             |
-| ki.tc           | https://ki.tc                |     400 MB     | depends on the file size[^1] |            ❌             |             ❌             |
-| CyberFile       | https://cyberfile.me         |     10 GB      |            5 days            |            ✔️            |             ❌             |
-| c-v.sh          | https://c-v.sh               |      4 GB      | depends on the file size[^1] |            ✔️            |             ❌             |
-| x0.at           | https://x0.at                |     50 MB      | depends on the file size[^1] |            ❌             |             ❌             |
-| Nopaste         | https://nopaste.net          |      2 GB      |           21 days            |            ❌             |             ❌             |
-| TmpSend         | https://tmpsend.com          |      1 GB      |            7 days            |            ❌             |             ❌             |
-| Isra.cloud      | https://isra.cloud           |      5 MB      |           24 hours           |            ✔️            |             ❌             |
-| DoodStream      | https://doodstream.com       |    infinite    |           60 days            |            ❌             |            ✔️             |
-| Pixeldrain      | https://pixeldrain.com       |     20 GB      |           90 days            |            ✔️            |            ✔️             |
-| Drop.download   | https://drop.download        |     50 GB      |           10 days            |            ❌             |            ✔️             |
-| FileMoon        | https://filemoon.sx          |     50 GB      |           10 days            |            ❌             |            ✔️             |
-| Catbox          | https://catbox.moe           |     200 MB     |           infinite           |            ✔️            |            ✔️             |
-| ddownload       | https://ddownload.com        |      2 GB      |           30 days            |            ✔️            |            ✔️             |
-| mp4upload       | https://mp4upload.com        |     500 MB     |           30 days            |            ❌             |            ✔️             |
-| DropGalaxy      | https://dropgalaxy.com       |      5 GB      |           120 days           |            ❌             |            ✔️             |
-| Nitroflare      | https://nitroflare.com       |     10 GB      |           90 days            |            ❌             |            ✔️             |
-| Vidoza          | https://vidoza.net           |     50 GB      |           30 days            |            ❌             |            ✔️             |
-| Katfile         | https://katfile.com          |      5 GB      |           10 days            |            ✔️            |            ✔️             |
-| Rapidgator      | https://rapidgator.net       |     80 GB      |           30 days            |            ❌             |            ✔️             |
-| StreamA2Z       | https://streama2z.com        |     10 GB      |           60 days            |            ❌             |            ✔️             |
-| StreamWish      | https://streamwish.com       |     50 GB      |           infinite           |            ❌             |            ✔️             |
-| StreamRuby      | https://streamruby.com       |     50 GB      |           10 days            |            ❌             |            ✔️             |
-| Voe.sx          | https://voe.sx               |     25 GB      |           60 days            |            ❌             |            ✔️             |
-| DevUploads      | https://devuploads.com       |      5 GB      |           30 days            |            ❌             |            ✔️             |
+| Column                               | Emoji(s)  | Meaning(s)                                                         |
+| ------------------------------------ | --------- | ------------------------------------------------------------------ |
+| Name                                 | 🎞️       | 🎞️ = Specialist video streaming host                              |
+| 📁 Max file size / 🕐 File retention | 👻, 👤    | 👻 = Anonymous upload limits<br></br>👤 = Account-based upload limits   |
+| 🗑️ Supports manual file deletion    | ✔️, 🔧, - | ✔️ = Yes<br></br>🔧 = Only with API key<br></br>- = Not supported            |
+| 🔑 API key support                   | ✨, 🔒, -  | ✨ = API key optional<br></br>🔒 = API key required<br></br>- = Not supported |
 
-In all, PolyUploader lets you upload your files to **76 different hosts** !
+### 🌐 Hosts
 
-If you know of a host that has an API or just a CLI interface, please open an [issue](https://github.com/spel987/PolyUploader/issues).
+| Name                                                                       | Url                          |   📁 Max file size    |    🕐 File retention time    | 🗑️ Supports manual file deletion | 🔑 API key support |
+| :------------------------------------------------------------------------- | :--------------------------- | :-------------------: | :--------------------------: | :-------------------------------: | :----------------: |
+| <img src="/img/host_icons/1fichier.com.png" width="16"/> 1fichier             | https://1fichier.com         |     👻, 👤 300 GB      |   👻 15 days<br></br>👤 30 days   |                ✔️                 |         ✨          |
+| <img src="/img/host_icons/torbobit.net.png" width="16"/> Turbobit             | https://turbobit.net         | 👻 200 MB<br></br>👤 200 GB |   👻 7 days<br></br>👤 30 days    |                 -                 |         ✨          |
+| <img src="/img/host_icons/bowfile.com.png" width="16"/> Bowfile               | https://bowfile.com          |         20 GB         |           30 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/gofile.io.png" width="16"/> Gofile                  | https://gofile.io            |    👻, 👤 infinite    |        👻, 👤 10 days        |                ✔️                 |         ✨          |
+| <img src="/img/host_icons/hitfile.net.png" width="16"/> Hitfile               | https://hitfile.net          | 👻 4 GB<br></br>👤 100 GB  |       👻, 👤  30 days        |                 -                 |         ✨          |
+| <img src="/img/host_icons/1cloudfile.com.png" width="16"/> 1Cloudfile         | https://1cloudfile.com       |         5 GB          |           30 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/file-upload.org.png" width="16"/> file-upload.org   | https://file-upload.org      |        200 MB         |           60 days            |                 -                 |         -          |
+| <img src="/img/host_icons/rapidfileshare.net.png" width="16"/> RapidFileShare | http://rapidfileshare.net    |        512 MB         |            5 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/upload.ee.png" width="16"/> Upload.ee               | https://upload.ee            |        100 MB         |           50 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/transfer.sh.png" width="16"/> transfer.sh           | https://transfer.sh          |         10 GB         |           14 days            |                 -                 |         -          |
+| <img src="/img/host_icons/waaw.ac.png" width="16"/> Netu 🎞️                  | https://netu.ac              |   👻 8 GB<br></br>👤 100 GB   |           👻, 👤 30 days     |                 -                 |         ✨          |
+| <img src="/img/host_icons/buzzheavier.com.png" width="16"/> Buzzheavier       | https://buzzheavier.com      |    👻, 👤 infinite    |        👻, 👤 7 days         |                🔧                 |         ✨          |
+| <img src="/img/host_icons/hexload.com.png" width="16"/> HexUpload             | https://hexload.com          |         2 GB          |           60 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/vikingfile.com.png" width="16"/> VikingFile         | https://vikingfile.com       |         10 GB         |           20 days            |                 -                 |         -          |
+| DailyUploads                                                               | https://dailyuploads.net     |       infinite        |           30 days            |                 -                 |         -          |
+| <img src="/img/host_icons/usersdrive.com.png" width="16"/> UsersDrive         | https://usersdrive.com       |        2.25 GB        |           10 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/send.now.png" width="16"/> Send.now                 | https://send.now             |        100 GB         |           15 days            |                 -                 |         -          |
+| <img src="/img/host_icons/mexa.sh.png" width="16"/> Mexa.sh                   | https://mexa.sh              |        500 MB         |           60 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/megaup.net.png" width="16"/> MegaUp                 | https://megaup.net           |         5 GB          |           60 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/uploadify.net.png" width="16"/> Uploadify           | https://uploadify.net        |         2 GB          |           infinite           |                ✔️                 |         -          |
+| <img src="/img/host_icons/clicknupload.click.png" width="16"/> Clicknupload   | https://clicknupload.click   |         2 GB          |            7 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/filespace.com.png" width="16"/> Filespace           | https://filespace.com        |        150 MB         |           10 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/gulf-up.com.png" width="16"/> Gulfup                | https://www.gulf-up.com      | 👻 200 MB<br></br>👤 10 GB |   👻 10 days<br></br>👤 30 days   |                ✔️                 |         ✨          |
+| <img src="/img/host_icons/fastupload.io.png" width="16"/> Fastupload          | https://fastupload.io        |         50 GB         |           30 days            |                ✔️                 |         -          |
+| UploadHive                                                                 | https://uploadhive.com       |       infinite        |           30 days            |                 -                 |         -          |
+| <img src="/img/host_icons/dfiles.eu.png" width="16"/> DepositFiles            | https://dfiles.eu            |         10 GB         |           90 days            |                 -                 |         -          |
+| <img src="/img/host_icons/download.gg.png" width="16"/> Download.gg           | https://download.gg          |         25 GB         |           infinite           |                ✔️                 |         -          |
+| <img src="/img/host_icons/sendvid.com.png" width="16"/> Sendvid 🎞️           | https://sendvid.com          |         1 GB          |           90 days            |                 -                 |         -          |
+| <img src="/img/host_icons/uploady.io.png" width="16"/> Uploady                | https://uploady.io           | 👻 1 GB<br></br>👤 100 GB  |        👻, 👤 30 days        |                ✔️                 |         ✨          |
+| <img src="/img/host_icons/anontransfer.com.png" width="16"/> AnonTransfer     | https://anontransfer.com     |         1 GB          |           30 days            |                 -                 |         -          |
+| <img src="/img/host_icons/filemirage.com.png" width="16"/> FileMirage     | https://filemirage.com     |        👻, 👤  50 GB          |          👻, 👤  60 days            |                 -                 |         ✨          |
+| <img src="/img/host_icons/litter.catbox.moe.png" width="16"/> Litterbox       | https://litterbox.catbox.moe |         1 GB          |           24 hours           |                 -                 |         -          |
+| Temp.sh                                                                    | https://temp.sh              |         4 GB          |            3 days            |                 -                 |         -          |
+| <img src="/img/host_icons/tmpfiles.org.png" width="16"/> TmpFiles.org         | https://tmpfiles.org         |        100 MB         |            1 hour            |                 -                 |         -          |
+| <img src="/img/host_icons/gofile.to.png" width="16"/> Gofile.to            | https://gofile.to         |         5 GB          |           infinite           |                 -                 |         -          |
+| <img src="/img/host_icons/free.fr.png" width="16"/> Free.fr                   | https://transfert.free.fr    |         10 GB         |            7 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/uguu.se.png" width="16"/> Uguu.se                   | https://uguu.se              |         32 MB         |           3 hours            |                 -                 |         -          |
+| <img src="/img/host_icons/uguu.se.png" width="16"/> lurkmore Uguu             | https://upload.lurkmore.com  |        1.28 GB        |           24 hours           |                 -                 |         -          |
+| <img src="/img/host_icons/uguu.se.png" width="16"/> Uguu                      | https://uguu.aishiteiru.moe/ |        128 MB         |           24 hours           |                 -                 |         -          |
+| <img src="/img/host_icons/filer.net.png" width="16"/> Filer.net               | https://filer.net            |        500 MB         |           180 days           |                 -                 |         -          |
+| <img src="/img/host_icons/filebin.net.png" width="16"/> Filebin               | https://filebin.net          |       infinite        |            7 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/douploads.net.png" width="16"/> DoUploads           | https://douploads.net        |         1 GB          |           10 days            |                ✔️                 |         -          |
+| Dataupload                                                                 | https://dataupload.net       |        300 MB         |           30 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/upstore.net.png" width="16"/> Upstore               | https://upstore.net          |         1 GB          |           30 days            |                 -                 |         -          |
+| <img src="/img/host_icons/ufile.io.png" width="16"/> uFile                    | https://ufile.io             |         5 GB          |           30 days            |                 -                 |         -          |
+| <img src="/img/host_icons/krakenfiles.com.png" width="16"/> KrakenFiles       | https://krakenfiles.com      |         1 GB          |           30 days            |                 -                 |         -          |
+| Rapidshare.io                                                              | https://rapidshare.io        |         1 GB          |           10 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/media.cm.png" width="16"/> Media.cm 🎞️             | https://media.cm             |        300 MB         |           90 days            |                 -                 |         -          |
+| <img src="/img/host_icons/oshi.at.png" width="16"/> Oshi.at                   | https://oshi.at              |         5 GB          |           2 hours            |                ✔️                 |         -          |
+| bashupload                                                                 | https://bashupload.com       |         50 GB         |            3 days            |                 -                 |         -          |
+| <img src="/img/host_icons/tommo.team.png" width="16"/> Tommo.team             | https://tommo.team           |         4 GB          |           30 days            |                 -                 |         -          |
+| Desiupload                                                                 | https://desiupload.co        |       infinite        |           15 days            |                 -                 |         -          |
+| <img src="/img/host_icons/tempfiles.ninja.png" width="16"/> tempfiles.ninja   | https://tempfiles.ninja      |        100 MB         |           24 hours           |                ✔️                 |         -          |
+| <img src="/img/host_icons/fileditchstuff.me.png" width="16"/> Fileditch       | https://fileditch.com        |         5 GB          |           30 days            |                 -                 |         -          |
+| <img src="/img/host_icons/up2sha.re.png" width="16"/> Up2Share                | https://up2sha.re            |         64 MB         |           30 days            |                 -                 |         -          |
+| Dbree                                                                      | https://dbree.me             |        100 MB         |           60 days            |                 -                 |         -          |
+| <img src="/img/host_icons/udrop.com.png" width="16"/> udrop                   | https://udrop.com            |         10 GB         |            7 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/tempsend.com.png" width="16"/> Tempsend             | https://tempsend.com         |         2 GB          |            7 days            |                 -                 |         -          |
+| Curl.by                                                                    | https://curl.by              |         32 MB         |           30 days            |                 -                 |         -          |
+| <img src="/img/host_icons/uptomega.net.png" width="16"/> Uptomega             | https://uptomega.net         |         1 GB          |            3 days            |                 -                 |         -          |
+| Data Vaults                                                                    | https://datavaults.co              |         1 GB         |           3 days            |                 -                 |         -          |
+| <img src="/img/host_icons/qu.ax.png" width="16"/> qu.ax                       | https://qu.ax                |        256 MB         |           infinite           |                 -                 |         -          |
+| <img src="/img/host_icons/filetmp.com.png" width="16"/> FileTmp               | https://filetmp.com          |        300 MB         |           5 hours            |                 -                 |         -          |
+| <img src="/img/host_icons/ccu.to.png" width="16"/> CCU.to                     | https://ccu.to               |         5 GB          |            3 days            |                 -                 |         -          |
+| <img src="/img/host_icons/dosya.co.png" width="16"/> Dosya.co                 | https://dosya.co             |         2 GB          |           45 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/ibb.co.png" width="16"/> ImgBB                      | https://imgbb.com            |         32 MB         |           infinite           |                 -                 |         -          |
+| ki.tc                                                                      | https://ki.tc                |        400 MB         | depends on the file size[^1] |                 -                 |         -          |
+| <img src="/img/host_icons/udrop.com.png" width="16"/> UploadFile.pl           | https://uploadfile.pl        |        5.98 GB        |           30 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/nippyfile.com.png" width="16"/> NippyFile           | https://nippyfile.com        |        100 MB         |           infinite           |                 -                 |         -          |
+| <img src="/img/host_icons/filestore.to.png" width="16"/> Filestore            | https://filestore.to         |         2 GB          |           15 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/fast-down.com.png" width="16"/> Fast Down           | https://down.fast-down.com   |         10 GB         |           30 days            |                 -                 |         -          |
+| <img src="/img/host_icons/cyberfile.me.png" width="16"/> CyberFile            | https://cyberfile.me         |         10 GB         |            5 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/end2end.tech.png" width="16"/> end2end              | https://end2end.tech         |         2 GB          |           infinite           |                ✔️                 |         -          |
+| <img src="/img/host_icons/c-v.sh.png" width="16"/> c-v.sh                     | https://c-v.sh               |        512 MB         | depends on the file size[^1] |                ✔️                 |         -          |
+| x0.at                                                                      | https://x0.at                |        512 MB         | depends on the file size[^1] |                 -                 |         -          |
+| <img src="/img/host_icons/nopaste.net.png" width="16"/> Nopaste               | https://nopaste.net          |         2 GB          |           21 days            |                 -                 |         -          |
+| <img src="/img/host_icons/1filesharing.com.png" width="16"/> 1filesharing               | https://1filesharing.com          |         1 GB          |           10 days            |                 ✔️                 |         -          |
+| <img src="/img/host_icons/tmpsend.com.png" width="16"/> TmpSend               | https://tmpsend.com          |         1 GB          |            7 days            |                 -                 |         -          |
+| <img src="/img/host_icons/mega4upload.net.png" width="16"/> Mega4up           | https://mega4upload.net      |        200 MB         |           15 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/hostuje.net.png" width="16"/> Hostuje               | https://hostuje.net          |        2.5 GB         |           90 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/uploadflix.com.png" width="16"/> UploadFlix         | https://uploadflix.com       |         3 GB          |           20 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/dz4up.com.png" width="16"/> DZ4Up                   | https://dz4up.com            |         2 GB          |           30 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/wdfiles.ru.png" width="16"/> WDFiles                | https://wdfiles.ru           |         3 GB          |           15 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/m1r.ai.png" width="16"/> m1rai                      | https://up.m1r.ai            |        100 MB         |           infinite           |                 -                 |         -          |
+| <img src="/img/host_icons/s3k.ai.png" width="16"/> s3kai                      | https://up.s3k.ai            |         1 GB          |           15 days            |                 -                 |         -          |
+| <img src="/img/host_icons/xup.in.png" width="16"/> XUP                        | https://www.xup.in           |        100 MB         |           150 days           |                ✔️                 |         -          |
+| Filepv                                                                     | https://filepv.com           |         2 GB          |           30 days            |                 -                 |         -          |
+| F2H                                                                        | https://f2h.io               |         1 GB          |           50 days            |                 -                 |         -          |
+| ayaya.beauty                                                               | https://ayaya.beauty         |         1 GB          |           14 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/dropmb.com.png" width="16"/> DropMB                  | https://dropmb.com            |         512 MB         |            365 days            |                -                 |         -          |
+| <img src="/img/host_icons/nelion.me.png" width="13"/> Nelion                  | https://nelion.me            |         20 MB         |            7 days            |                ✔️                 |         -          |
+| <img src="/img/host_icons/atomauth.com.png" width="16"/> Atomauth             | https://atomauth.com         |         1 GB          |           infinite           |                 -                 |         -          |
+| <img src="/img/host_icons/kawaii.su.png" width="16"/> imouto.kawaii.su        | https://imouto.kawaii.su     |         20 MB         |           30 days            |                 -                 |         -          |
+| <img src="/img/host_icons/do7go.com.png" width="16"/> DoodStream 🎞️          | https://doodstream.com       |       infinite        |           60 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/pixeldrain.com.png" width="16"/> Pixeldrain         | https://pixeldrain.com       |         20 GB         |           90 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/drop.download.png" width="16"/> Drop.download       | https://drop.download        |         50 GB         |           10 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/filemoon.sx.png" width="16"/> FileMoon 🎞️          | https://filemoon.sx          |         50 GB         |           10 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/files.catbox.moe.png" width="16"/> Catbox           | https://catbox.moe           |        200 MB         |           infinite           |                🔧                 |         🔒         |
+| <img src="/img/host_icons/ddownload.com.png" width="16"/> ddownload           | https://ddownload.com        |         2 GB          |           30 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/mp4upload.com.png" width="16"/> mp4upload 🎞️       | https://mp4upload.com        |        500 MB         |           30 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/dropgalaxy.com.png" width="16"/> DropGalaxy         | https://dropgalaxy.com       |         5 GB          |           120 days           |                 -                 |         🔒         |
+| <img src="/img/host_icons/nitroflare.com.png" width="16"/> Nitroflare         | https://nitroflare.com       |         10 GB         |           90 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/vidoza.net.png" width="16"/> Vidoza 🎞️             | https://vidoza.net           |         50 GB         |           30 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/katfile.com.png" width="16"/> Katfile               | https://katfile.com          |         5 GB          |           10 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/rapidgator.net.png" width="16"/> Rapidgator         | https://rapidgator.net       |         80 GB         |           30 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/streama2z.xyz.png" width="16"/> StreamA2Z 🎞️       | https://streama2z.com        |         10 GB         |           60 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/strwish.com.png" width="16"/> StreamWish 🎞️        | https://streamwish.com       |         50 GB         |           infinite           |                 -                 |         🔒         |
+| <img src="/img/host_icons/rubystm.com.png" width="16"/> StreamRuby 🎞️        | https://streamruby.com       |         50 GB         |           10 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/voe.sx.png" width="16"/> Voe.sx 🎞️                 | https://voe.sx               |         25 GB         |           60 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/devuploads.com.png" width="16"/> DevUploads         | https://devuploads.com       |         5 GB          |           30 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/darkibox.com.png" width="16"/> Darkibox 🎞️         | https://darkibox.com         |         10 GB         |           30 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/filegram.to.png" width="16"/> Filegram 🎞️          | https://filegram.to          |         15 GB         |           30 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/goodstream.one.png" width="16"/> Goodstream 🎞️     | https://goodstream.one       |         25 GB         |           60 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/dropload.io.png" width="16"/> Dropload 🎞️          | https://dropload.io          |         7 GB          |           30 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/gett.su.png" width="16"/> GeTT                      | https://gett.su              |         2 GB          |           30 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/oneupload.to.png" width="16"/> OneUpload 🎞️        | https://oneupload.to         |         4 GB          |           20 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/smoothpre.com.png" width="16"/> EarnVids 🎞️        | https://earnvids.com         |         50 GB         |           30 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/vinovo.to.png" width="16"/> Vinovo 🎞️              | https://vinovo.si            |         15 GB         |           60 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/uploadrar.com.png" width="16"/> Uploadrar           | https://uploadrar.com        |         30 GB         |           30 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/listeamed.net.png" width="16"/> Vidguard 🎞️        | https://vidguard.to          |         15 GB         |           30 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/savefiles.com.png" width="16"/> SaveFiles 🎞️       | https://savefiles.com        |         20 GB         |           15 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/filespayouts.com.png" width="16"/> Filespayouts     | https://filespayouts.com     |         10 GB         |           60 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/fileaxa.com.png" width="16"/> Fileaxa               | https://fileaxa.com          |         1 GB          |           15 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/supervideo.cc.png" width="16"/> SuperVideo 🎞️      | https://supervideo.cc        |         6 GB          |           30 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/mixloads.to.png" width="16"/> MixLoads              | https://mixloads.to          |         30 GB         |           20 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/ups2up.fun.png" width="16"/> Up4Stream              | https://up4stream.com        |         20 GB         |           15 days            |                🔧                 |         🔒         |
+| <img src="/img/host_icons/uqload.cx.png" width="16"/> Uqload 🎞️              | https://uqload.cx            |         4 GB          |           30 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/lulustream.com.png" width="16"/> LuluStream 🎞️     | https://lulustream.com       |        150 GB         |           10 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/upfiles.com.png" width="16"/> UpFiles               | https://upfiles.com          |         25 GB         |           30 days            |                 -                 |         🔒         |
+| <img src="/img/host_icons/streambolt.tv.png" width="16"/> StreamBolt 🎞️      | https://streambolt.tv        |         5 GB          |           30 days            |                 -                 |         🔒         |
+
+### 📑 Details of hosts
+
+| Category                             | Count |
+| :----------------------------------- | :---: |
+| 🌐 Number of hosts                   |  130  |
+| 🔓 Hosts not requiring an API key    |  93  |
+| ✨ Hosts supporting optional API key  |   9   |
+| 🔒 Hosts requiring an API key        |  37   |
+| 🗑️ Hosts supporting manual deletion |  55   |
+| 🎞️ Specialist video streaming host  |  24   |
+
+If you know of a host that I can add, please open an [issue](https://github.com/spel987/PolyUploader/issues).
 
 [^1]: **"depends on the file size"** means that the host keeps your files according to their weight. They use different algorithms. *For more information, please visit the chosen site.*

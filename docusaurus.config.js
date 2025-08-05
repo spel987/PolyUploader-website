@@ -62,7 +62,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Guide & Explications',
+            label: 'Documentation',
           },
           {
             href: 'https://github.com/spel987/PolyUploader',
@@ -78,8 +78,12 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Guide & Explications',
-                to: '/',
+                label: 'Documenatation',
+                to: '/presentation',
+              },
+              {
+                label: 'Download for Windows',
+                to: 'https://github.com/spel987/PolyUploader/releases/download/1.7.0/PolyUploader_1.7.0_x64-setup.exe',
               },
             ],
           },
@@ -87,21 +91,25 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Demonstration',
-                href: 'https://p-u.vercel.app/demonstration',
-              },
-              {
                 label: 'GitHub Repository',
                 href: 'https://github.com/spel987/PolyUploader',
+              },
+              {
+                label: 'Terms',
+                href: 'https://p-u.vercel.app/terms',
+              },
+              {
+                label: 'Statistics',
+                href: 'https://p-u.vercel.app/statistics',
               },
               {
                 label: 'Site GitHub Repository',
                 href: 'https://github.com/spel987/PolyUploader-website',
               },
               {
-                label: 'Terms',
-                href: 'https://p-u.vercel.app/terms',
-              },
+                label: 'API GitHub Repository',
+                href: 'https://github.com/spel987/PolyUploader-API',
+              }
             ],
           },
         ],

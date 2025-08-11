@@ -49,7 +49,8 @@ const config = {
         {name: 'twitter:image', content: 'https://p-u.vercel.app/assets/meta_visual.png'},
         {name: 'og:description', content: 'Documentation - PolyUploader. Upload your files remotely to different hosting sites.'},
         {name: 'theme-color', content: '#4f46e5'},
-        {name: 'google-site-verification', content: 'dUIfx_ZLCzBvgIpq4n0tj7OpEyAqDt3kugqd5ryb02w'}
+        {name: 'google-site-verification', content: 'dUIfx_ZLCzBvgIpq4n0tj7OpEyAqDt3kugqd5ryb02w'},
+        {name: 'algolia-site-verification', content: 'ABD3B0B8C4094FBF'}
       ],
       navbar: {
         title: 'PolyUploader',

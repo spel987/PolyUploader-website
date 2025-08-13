@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/qGdFzBd.png">
+<img src="https://i.imgur.com/3sDWdqy.png">
 
 # PolyUploader Website
 

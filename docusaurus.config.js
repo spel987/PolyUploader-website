@@ -42,6 +42,14 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        appId: 'J5YPOJXAP4',
+        apiKey: '9917bf17d1da85dad737218405ebc217',
+        indexName: 'Documentation Website',
+        contextualSearch: true,
+        searchPagePath: 'search',
+        insights: false,
+      },
       metadata: [
         {name: 'og:url', content: 'https://polyuploader.vercel.app'},
         {name: 'og:image', content: 'https://p-u.vercel.app/assets/meta_visual.png'},

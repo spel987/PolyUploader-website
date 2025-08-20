@@ -34,7 +34,7 @@ function HeroStats() {
   return (
     <div className={styles.heroStats}>
       <div className={styles.statItem}>
-        <div className={styles.statNumber}>1.7.0</div>
+        <div className={styles.statNumber}>1.7.1</div>
         <div className={styles.statLabel}>Current Version</div>
       </div>
       <div className={styles.statItem}>
@@ -82,7 +82,7 @@ function HomepageHeader() {
             <div className={styles.buttons}>
               <Link
                 className={`button button--lg ${styles.gradientButton} ${styles.buttonSpace}`}
-                to="https://github.com/spel987/PolyUploader/releases/download/1.7.0/PolyUploader_1.7.0_x64-setup.exe">
+                to="https://github.com/spel987/PolyUploader/releases/download/1.7.1/PolyUploader_1.7.1_x64-setup.exe">
                 <FontAwesomeIcon icon={faWindows} className={styles.buttonIcon} />
                 Download for Windows
               </Link>

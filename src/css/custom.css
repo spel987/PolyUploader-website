@@ -26,6 +26,7 @@ body {
   --ifm-color-primary-lightest: #4338c9;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --search-color: #ececec;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -58,6 +59,8 @@ body {
   
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.4);
   --ifm-hover-overlay: rgba(255, 255, 255, 0.05);
+
+  --search-color: #0a0a0a;
 }
 
 [data-theme='dark'] .features {
@@ -118,4 +121,14 @@ body {
 
 [data-theme='dark'] .features p {
   color: #bdbdbd;
+}
+
+.DocSearch-Button {
+  font-family: "Space Grotesk", sans-serif;
+  border: 1px solid var(--ifm-color-primary) !important;
+  background: var(--search-color) !important;
+}
+
+.DocSearch-Button:hover {
+  box-shadow: 0 4px 8px rgba(79, 70, 229, 0.2) !important;
 }

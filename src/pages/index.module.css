@@ -4,16 +4,23 @@
 
 /* Main Hero Section */
 .heroBanner {
-  --hero-padding-y: 13rem;
-  --hero-min-height: 80vh;
-  
   position: relative;
-  padding: var(--hero-padding-y) 0;
-  min-height: var(--hero-min-height);
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  min-height: calc(100dvh - var(--ifm-navbar-height));
+  box-sizing: border-box;
   overflow: hidden;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0 4.5rem 0;
   background: none;
+}
+
+@media (min-width: 997px) and (min-height: 600px) {
+  .heroBanner {
+    height: calc(100vh - var(--ifm-navbar-height));
+    height: calc(100dvh - var(--ifm-navbar-height));
+  }
 }
 
 /* Show More Button */
@@ -68,9 +75,6 @@
     bottom: 1.5rem;
     padding: 0.6rem 1.3rem;
     font-size: 0.95rem;
-  }
-  .heroBanner {
-    padding-bottom: 9rem;
   }
 }
 
@@ -440,9 +444,11 @@
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 4rem 0 3rem 0;
+    padding: 3rem 0 5rem 0;
     text-align: center;
-    min-height: 70vh;
+    min-height: calc(100vh - var(--ifm-navbar-height));
+    min-height: calc(100dvh - var(--ifm-navbar-height));
+    height: auto;
   }
   
   .heroContent {
@@ -551,6 +557,11 @@
   padding: 6rem 0;
   position: relative;
   border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.downloadSection * {
+  font-family: inherit;
 }
 
 .downloadHeader {
@@ -558,40 +569,16 @@
   margin-bottom: 4rem;
 }
 
-.downloadBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(99, 102, 241, 0.12);
-  color: #4f46e5;
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  padding: 0.4rem 1rem;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 1.25rem;
-}
-
-[data-theme='dark'] .downloadBadge {
-  background: rgba(125, 145, 251, 0.15);
-  color: #a5b4fc;
-  border-color: rgba(125, 145, 251, 0.3);
-}
-
-.downloadBadgeIcon {
-  font-size: 0.85rem;
-}
-
 .downloadSectionTitle {
   font-size: 2.5rem !important;
   font-weight: 700 !important;
-  margin-bottom: 0.75rem !important;
+  margin-bottom: 1rem !important;
 }
 
 .downloadSectionSubtitle {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: var(--ifm-color-emphasis-700);
-  max-width: 620px;
+  max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
 }
@@ -601,45 +588,66 @@
   margin-bottom: 2rem;
 }
 
+.downloadCol {
+  display: flex;
+  flex-direction: column;
+}
+
 .downloadCard {
+  padding: 2rem 1.5rem;
+  height: 100%;
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
+  overflow: visible;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: radial-gradient(ellipse 120% 100% at 50% 0%, rgba(99,102,241,0.18) 0%, rgba(102, 92, 246, 0.1) 60%, rgba(226, 228, 255, 0.07) 100%);
+  box-shadow: 0 0 32px 0 rgba(99, 102, 241, 0.10), 0 0 8px 2px rgba(99, 102, 241, 0.10);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2.75rem 1.75rem 2rem 1.75rem;
-  border-radius: 20px;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  background: var(--ifm-card-background-color, #ffffff);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  height: 100%;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
-[data-theme='dark'] .downloadCard {
-  background: #181820;
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+.downloadCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  background: var(--ifm-color-primary);
+  opacity: 0;
+  transition: all 0.4s ease;
+  filter: blur(20px);
+  transform: scale(0.8);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .downloadCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-10px) scale(1.02);
 }
 
-[data-theme='dark'] .downloadCard:hover {
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+.downloadCard:hover::before {
+  opacity: 0.1;
+  transform: scale(1);
+  filter: blur(30px);
+}
+
+.downloadCard > * {
+  position: relative;
+  z-index: 1;
 }
 
 .downloadCardActive {
   border: 2px solid #6366f1 !important;
-  box-shadow: 0 12px 35px rgba(99, 102, 241, 0.18), 0 0 15px rgba(99, 102, 241, 0.12) !important;
-  transform: translateY(-4px);
 }
 
 [data-theme='dark'] .downloadCardActive {
   border: 2px solid #7d91fb !important;
-  box-shadow: 0 12px 35px rgba(125, 145, 251, 0.25), 0 0 20px rgba(125, 145, 251, 0.15) !important;
 }
 
 .osBadge {
@@ -665,11 +673,15 @@
 }
 
 .downloadCardIcon {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 3rem;
   line-height: 1;
-  margin-bottom: 1.25rem;
-  color: #4f46e5;
-  transition: transform 0.3s ease;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-color-primary, #4338c9);
+  transition: all 0.3s ease;
 }
 
 [data-theme='dark'] .downloadCardIcon {
@@ -677,7 +689,8 @@
 }
 
 .downloadCard:hover .downloadCardIcon {
-  transform: scale(1.1);
+  transform: scale(1.1) rotateY(10deg);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
 }
 
 .downloadCardTitle {
@@ -687,8 +700,8 @@
 }
 
 .downloadCardSubtitle {
-  font-size: 0.9rem;
-  color: var(--ifm-color-emphasis-600);
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-700);
   margin-bottom: 1.75rem;
   min-height: 2.5rem;
   display: flex;
@@ -713,34 +726,40 @@
 }
 
 .downloadButtonSecondary {
-  background: #f1f5f9 !important;
-  border: 1px solid #cbd5e1 !important;
-  color: #1e293b !important;
-  transition: all 0.25s ease !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(99, 102, 241, 0.25) !important;
+  color: #312e81 !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.06) !important;
 }
 
 .downloadButtonSecondary:hover {
-  background: #e2e8f0 !important;
-  color: #0f172a !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: #6366f1 !important;
+  color: #4338ca !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.18) !important;
 }
 
 [data-theme='dark'] .downloadButtonSecondary {
   background: rgba(255, 255, 255, 0.08) !important;
   border: 1px solid rgba(255, 255, 255, 0.16) !important;
   color: #f8fafc !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
 }
 
 [data-theme='dark'] .downloadButtonSecondary:hover {
   background: rgba(255, 255, 255, 0.16) !important;
+  border-color: #7d91fb !important;
   color: #ffffff !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 6px 20px rgba(125, 145, 251, 0.25) !important;
 }
 
 .downloadMeta {
-  font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-500);
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
   margin-top: 0.5rem;
 }
 
@@ -755,10 +774,10 @@
 
 .additionalLabel {
   font-size: 0.78rem;
-  color: var(--ifm-color-emphasis-500);
+  color: var(--ifm-color-emphasis-600);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .pillGroup {
@@ -774,35 +793,36 @@
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  background: var(--ifm-color-emphasis-100);
-  color: var(--ifm-color-emphasis-800);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  background: rgba(255, 255, 255, 0.7);
+  color: #312e81;
   text-decoration: none !important;
   transition: all 0.2s ease;
 }
 
 .downloadPill:hover {
   border-color: #6366f1;
-  color: #6366f1;
-  background: rgba(99, 102, 241, 0.1);
+  color: #ffffff;
+  background: #6366f1;
   transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.25);
 }
 
 [data-theme='dark'] .downloadPill {
   border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   color: #e2e8f0;
 }
 
 [data-theme='dark'] .downloadPill:hover {
   border-color: #7d91fb;
-  color: #a5b4fc;
-  background: rgba(125, 145, 251, 0.15);
+  color: #ffffff;
+  background: #7d91fb;
 }
 
 .macNote {
-  font-size: 0.75rem;
-  color: var(--ifm-color-emphasis-500);
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-600);
   margin-top: 0.85rem;
   line-height: 1.4;
   margin-bottom: 0;
@@ -812,16 +832,18 @@
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  padding: 1.25rem 1.75rem;
-  border-radius: 16px;
-  background: rgba(99, 102, 241, 0.07);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  margin-top: 2.5rem;
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  background: radial-gradient(ellipse 120% 100% at 50% 0%, rgba(99, 102, 241, 0.12) 0%, rgba(102, 92, 246, 0.06) 60%, rgba(226, 228, 255, 0.04) 100%);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: 0 0 32px 0 rgba(99, 102, 241, 0.06);
+  margin-top: 3rem;
   text-align: left;
 }
 
 [data-theme='dark'] .downloadNotice {
-  background: rgba(125, 145, 251, 0.08);
+  background: radial-gradient(ellipse 120% 100% at 50% 0%, rgba(125, 145, 251, 0.12) 0%, rgba(99, 102, 241, 0.06) 60%, rgba(30, 30, 36, 0.5) 100%), #181820;
   border-color: rgba(125, 145, 251, 0.2);
 }
 
@@ -877,8 +899,22 @@
     margin-bottom: 3rem;
   }
 
-  .downloadCard {
-    margin-bottom: 2rem;
+  .downloadSectionTitle {
+    font-size: 2rem !important;
+  }
+
+  .downloadSectionSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .downloadCol {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 2.5rem;
+  }
+
+  .downloadCol:last-child {
+    margin-bottom: 0;
   }
 
   .downloadNotice {
@@ -886,5 +922,19 @@
     text-align: center;
     gap: 0.75rem;
     padding: 1.25rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .downloadSection {
+    padding: 3rem 0;
+  }
+
+  .downloadSectionTitle {
+    font-size: 1.8rem !important;
+  }
+
+  .downloadCard {
+    padding: 1.75rem 1rem;
   }
 }

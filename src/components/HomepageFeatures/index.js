@@ -59,10 +59,10 @@ function Feature({ Svg, title, description }) {
 
 export default function HomepageFeatures() {
   return (
-    <section id="why-choose" className={styles.features}>
+    <section className={styles.features}>
       <div className="container">
         <div className={styles.featuresHeader}>
-          <Heading as="h2" className={styles.sectionTitle}>
+          <Heading as="h2" id="why-choose" className={styles.sectionTitle}>
             Why choose PolyUploader?
           </Heading>  
           <p className={styles.sectionSubtitle}>

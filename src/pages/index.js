@@ -154,13 +154,9 @@ function DownloadSection({ detectedOS }) {
   const isLinux = detectedOS === 'Linux';
 
   return (
-    <section id="downloads" className={styles.downloadSection}>
+    <section className={styles.downloadSection}>
       <div className="container">
         <div className={styles.downloadHeader}>
-          <div className={styles.downloadBadge}>
-            <FontAwesomeIcon icon={faDownload} className={styles.downloadBadgeIcon} />
-            Release v1.7.2
-          </div>
           <Heading as="h2" id="downloads" className={styles.downloadSectionTitle}>
             Downloads
           </Heading>
@@ -171,7 +167,7 @@ function DownloadSection({ detectedOS }) {
 
         <div className={`row ${styles.downloadRow}`}>
           {/* Windows Card */}
-          <div className="col col--4">
+          <div className={clsx('col col--4', styles.downloadCol)}>
             <div className={clsx(styles.downloadCard, isWindows && styles.downloadCardActive)}>
               {isWindows && (
                 <div className={styles.osBadge}>
@@ -207,7 +203,7 @@ function DownloadSection({ detectedOS }) {
           </div>
 
           {/* Linux Card */}
-          <div className="col col--4">
+          <div className={clsx('col col--4', styles.downloadCol)}>
             <div className={clsx(styles.downloadCard, isLinux && styles.downloadCardActive)}>
               {isLinux && (
                 <div className={styles.osBadge}>
@@ -259,7 +255,7 @@ function DownloadSection({ detectedOS }) {
           </div>
 
           {/* macOS Card */}
-          <div className="col col--4">
+          <div className={clsx('col col--4', styles.downloadCol)}>
             <div className={clsx(styles.downloadCard, isMac && styles.downloadCardActive)}>
               {isMac && (
                 <div className={styles.osBadge}>

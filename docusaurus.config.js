@@ -13,7 +13,11 @@ const config = {
   projectName: 'PolyUploader',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   i18n: {
     defaultLocale: 'en',
@@ -87,12 +91,12 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Documenatation',
+                label: 'Documentation',
                 to: '/presentation',
               },
               {
-                label: 'Download for Windows',
-                to: 'https://github.com/spel987/PolyUploader/releases/download/1.7.0/PolyUploader_1.7.0_x64-setup.exe',
+                label: 'Downloads',
+                to: '/#downloads',
               },
             ],
           },
@@ -122,7 +126,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} PolyUploader, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © 2026 PolyUploader, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

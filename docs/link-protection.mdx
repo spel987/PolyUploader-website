@@ -1,0 +1,48 @@
+---
+sidebar_position: 6
+---
+
+# Link Protection
+
+<head>
+  <meta property="og:image" content="https://p-u.vercel.app/assets/meta_visual.png" />
+  <meta name="og:url" content="https://polyuploader.vercel.app/link-protection" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://p-u.vercel.app/assets/meta_visual.png" />
+  <meta name="og:description" content="Link Protection - PolyUploader. Protect your upload links with encrypted paste and link protection services." />
+  <meta name="theme-color" content="#4f46e5" />
+</head>
+
+After uploading a file, PolyUploader lets you protect the generated host links using a variety of link protection and encrypted paste services.
+
+You can protect your links either:
+- **As a bundle**: all host links grouped into a single protected page.
+- **Link by link**: one protected page per individual host link.
+
+This feature is accessible directly from the results view once the upload is completed.
+
+---
+
+## 🔒 Supported services
+
+| Service | Website | 🔑 API key | 🔄 Custom instance | 🗑️ Deletion |
+| :--- | :--- | :---: | :---: | :---: |
+| **PrivateBin** | [privatebin.net](https://privatebin.net) (configurable) | - | ✔️ | ✔️ |
+| **Cryptgeon** | [cryptgeon.org](https://cryptgeon.org) | - | - | - |
+| **SafeLinking** | [safelinking.net](https://safelinking.net) | - | - | - |
+| **pastes.dev** | [pastes.dev](https://pastes.dev) | - | - | - |
+| **Katbin** | [katb.in](https://katb.in) | - | - | - |
+| **Filecrypt** | [filecrypt.cc](https://filecrypt.cc) | 🔒 Required | - | ✔️ |
+
+:::tip[Custom PrivateBin instance]
+
+Only **PrivateBin** allows you to specify a custom compatible instance (default: `https://privatebin.net`). If you host your own PrivateBin server or prefer an alternative instance, you can configure it directly in the settings.
+
+:::
+
+:::info[Filecrypt API key]
+
+To use **Filecrypt**, you will need to provide your personal Filecrypt API key in the API key management section of PolyUploader.
+
+:::
+

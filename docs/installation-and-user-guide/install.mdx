@@ -59,10 +59,12 @@ npm i
 ```
 npm run tailwind
 ```
-## 🖥️ Or simply download and run the [release](https://github.com/spel987/PolyUploader/releases/latest) (Windows only).
+## 🖥️ Or simply download and run the latest [release](https://github.com/spel987/PolyUploader/releases/latest) (Windows, Linux and macOS).
 
-> 1) For the moment, the application is only available on Windows. I tried to build the application for Linux but I kept getting webkit errors and on top of that Linux doesn't handle certain CSS effects in the same way. The application wouldn't look very good and would be full of bugs. However, why not work to solve this problem in future versions.
-> 2) I'm not providing a portable version at the moment. In fact, Tauri creates a `C:\Users\<User>\AppData\Local\PolyUploader` folder containing the data required by the Webview.
+> 1) **PolyUploader is now cross-platform**: available on **Windows** (installer), **Linux** (AppImage, `.deb`, `.rpm`), and **macOS** (`.dmg`, `.tar.gz`).
+> 2) **Platform Stability**: While the Windows build is the most mature and thoroughly tested, builds on Linux and macOS are actively improving and may still experience occasional quirks or instability depending on your distribution and desktop environment.
+> 3) **macOS Gatekeeper**: The macOS build is currently unsigned. On first launch, you may need to right-click the app in your Applications folder and select **Open** to bypass Apple Gatekeeper.
+> 4) **Portable version**: There is no portable version provided at the moment. Tauri creates a local configuration directory (e.g. `C:\Users\<User>\AppData\Local\PolyUploader` on Windows) containing essential data required by the Webview.
 
 
 <details><summary>
@@ -71,9 +73,9 @@ npm run tailwind
 
 </summary>
 
-A 64-bit version is available. Download it and run it.
+A 64-bit installer (`.exe`) is available. Download and run it.
 
-Here's a pictorial guide to installing the software.
+Here's a pictorial guide to installing the software on Windows:
 
 ![Setup Windows Image 1](/img/install/setup_windows_image_1.png)
 
@@ -87,10 +89,41 @@ Here's a pictorial guide to installing the software.
 
 ![Setup Windows Image 6](/img/install/setup_windows_image_6.png)
 
-:::warning[Addition information]
+</details>
 
-There is **no portable version** at present. In fact, Tauri creates a `C:\Users\<User>\AppData\Local\PolyUploader` folder containing the data required by the Webview.
+<details><summary>
+
+**Linux**
+
+</summary>
+
+PolyUploader is packaged for Linux in three formats:
+
+- **AppImage** (`.AppImage`): Universal standalone package that runs on virtually any modern Linux distribution. After downloading, make it executable (`chmod +x PolyUploader_*.AppImage`) and run it.
+- **Debian / Ubuntu** (`.deb`): Install using `sudo dpkg -i PolyUploader_*.deb` or via your package manager.
+- **Red Hat / Fedora** (`.rpm`): Install using `sudo rpm -i PolyUploader-*.rpm` or `sudo dnf install PolyUploader-*.rpm`.
+
+:::warning[Linux WebKit & rendering note]
+
+Linux desktop environments use WebKitGTK for Tauri rendering. If you experience minor visual inconsistencies or font issues, ensure your system packages (`webkit2gtk`) are up to date.
 
 :::
+
+</details>
+
+<details><summary>
+
+**macOS**
+
+</summary>
+
+PolyUploader provides a universal macOS build (`.dmg` and `.app.tar.gz`) supporting both Apple Silicon (M1/M2/M3) and Intel-based Macs.
+
+1. Download the `.dmg` installer.
+2. Open the disk image and drag **PolyUploader** into your **Applications** folder.
+3. **Bypassing Gatekeeper**: Because the application is not notarized by Apple, macOS will prevent you from opening it normally on first launch. To open it:
+   - Go to your `Applications` folder.
+   - **Right-click** (or Control-click) on `PolyUploader.app` and choose **Open**.
+   - Click **Open** in the confirmation dialog. You will only need to do this once.
 
 </details>
